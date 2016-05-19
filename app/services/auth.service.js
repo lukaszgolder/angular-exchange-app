@@ -15,6 +15,8 @@
     this.logout = logout;
     this.isAuthorized = isAuthorized;
 
+    this.authorized = true;
+
     function login(user, password) {
       if (user === 'username' && password === 'password') {
         service.authorized = true;
