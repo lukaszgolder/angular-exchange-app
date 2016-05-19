@@ -9,7 +9,7 @@
 
   /* @ngInject */
   function routes($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.when('/exchange', '/exchange/history');
+    $urlRouterProvider.when('/exchange', '/exchange/summary');
     $urlRouterProvider.otherwise('exchange');
 
     $locationProvider.html5Mode(true).hashPrefix('!');
@@ -29,6 +29,12 @@
         resolve: {
           auth: auth
         }
+      })
+      .state('exchange.summary', {
+          url: '/summary',
+          templateUrl: 'app/exchange/summary.html',
+          controller: 'SummaryController',
+          controllerAs: 'vm'
       })
       .state('exchange.history', {
           url: '/history',
