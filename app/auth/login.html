@@ -1,0 +1,24 @@
+<div class="container">
+  <div id="login">
+    <form ng-submit="vm.onSubmit(vm.username, vm.password)">
+      <h2>Logowanie</h2>
+
+      <div class="alert alert-danger" ng-if="vm.message">
+        {{vm.message}}
+      </div>
+
+      <div class="form-group">
+        <label for="username">Nazwa użytkownika</label>
+        <input class="form-control" id="username" ng-model="vm.username">
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło:</label>
+        <input class="form-control" type="password" id="password" ng-model="vm.password">
+      </div>
+
+      <button class="btn btn-primary">
+        Zaloguj
+      </button>
+    </form>
+  </div>
+</div>

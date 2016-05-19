@@ -1,0 +1,21 @@
+#login {
+    padding: 35px;
+    max-width: 350px;
+    border-radius: $border-radius-base;
+    background: $gray-lightest;
+    margin: 160px auto;
+
+    h2 {
+        margin: 0 0 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px $gray-lighter solid;
+    }
+
+    form {
+        margin-bottom: 0;
+    }
+
+    label {
+        font-weight: 400;
+    }
+}

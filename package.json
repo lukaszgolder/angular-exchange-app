@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
     "bootstrap-sass": "^3.3.6"
   },
   "devDependencies": {
