@@ -1,0 +1,27 @@
+{
+  "name": "exchange-app",
+  "version": "1.0.0",
+  "description": "Angular 1 currency exchange application",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server",
+    "scss": "node-sass --precision 8 --include-path scss assets/styles/styles.scss assets/styles/styles.css",
+    "scss:w": "nodemon -e scss -x \"npm run scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukaszgolder/angular-exchange-app.git"
+  },
+  "author": "Łukasz Golder <lukasz.golder@tsh.io>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap-sass": "^3.3.6"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.0",
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2"
+  }
+}

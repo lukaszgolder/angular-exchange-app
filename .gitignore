@@ -1,0 +1,9 @@
+# Dependency directory
+node_modules
+
+# IDE directory
+.idea
+
+# Compiled files
+assets/styles/**/*.css
+assets/styles/**/*.css.map
