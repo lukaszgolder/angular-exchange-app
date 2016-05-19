@@ -1,0 +1,30 @@
+<form name="form" ng-submit="vm.onSubmit(form)">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <input class="form-control" type="number" ng-model="vm.controls.amount"
+               ng-model-options="{debounce: 250}" ng-change="vm.onAmountChanged()">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <select class="form-control" ng-model="vm.controls.source" ng-change="vm.onSourceChanged()"
+                ng-options="currency for currency in vm.currencies"></select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <input class="form-control" type="number" ng-model="vm.controls.result"
+               ng-model-options="{debounce: 250}" ng-change="vm.onResultChanged()">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <select class="form-control" ng-model="vm.controls.target" ng-change="vm.onTargetChanged()"
+                ng-options="currency for currency in vm.currencies"></select>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary">Wymień</button>
+</form>

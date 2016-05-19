@@ -27,20 +27,28 @@
         controller: 'ExchangeController',
         controllerAs: 'vm',
         resolve: {
-          auth: auth
+          auth: auth,
+          rate: rate
         }
       })
       .state('exchange.summary', {
-          url: '/summary',
-          templateUrl: 'app/exchange/summary.html',
-          controller: 'SummaryController',
-          controllerAs: 'vm'
+        url: '/summary',
+        abstract: true,
+        templateUrl: 'app/exchange/summary.html',
+        controller: 'SummaryController',
+        controllerAs: 'vm'
+      })
+      .state('exchange.summary.form', {
+        url: '',
+        templateUrl: 'app/exchange/exchange-form.html',
+        controller: 'ExchangeFormController',
+        controllerAs: 'vm'
       })
       .state('exchange.history', {
-          url: '/history',
-          templateUrl: 'app/exchange/history.html',
-          controller: 'HistoryController',
-          controllerAs: 'vm'
+        url: '/history',
+        templateUrl: 'app/exchange/history.html',
+        controller: 'HistoryController',
+        controllerAs: 'vm'
       });
   }
 
@@ -56,6 +64,13 @@
 
         return true;
       });
+  }
+
+  rate.$inject = ['TransactionService'];
+
+  /* @ngInject */
+  function rate(TransactionService) {
+    return TransactionService.getRates();
   }
 
 })();

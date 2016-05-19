@@ -5,7 +5,7 @@
     .module('app')
     .service('TransactionService', TransactionService);
 
-  TransactionService.$inject = ['$http', 'API_URL'];
+  TransactionService.$inject = ['$http', '$q', 'API_URL'];
 
   /* @ngInject */
   function TransactionService($http, $q, API_URL) {
@@ -27,8 +27,8 @@
     }
 
     function exchange(amount, source, target) {
-      if (service.rates[base]) {
-        return $q.when(service.result(amount, service.rates[base][target]));
+      if (service.rates[source]) {
+        return $q.when(service.result(amount, service.rates[source][target]));
       }
 
       return service.getRates(source)
