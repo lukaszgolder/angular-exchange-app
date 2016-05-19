@@ -5,18 +5,19 @@
     .module('app')
     .service('AuthService', AuthService);
 
-  AuthService.$inject = [];
+  AuthService.$inject = ['$q'];
 
   /* @ngInject */
-  function AuthService() {
+  function AuthService($q) {
+    var service = this;
+
     this.login = login;
     this.logout = logout;
-    this.getUser = getUser;
     this.isAuthorized = isAuthorized;
 
     function login(user, password) {
       if (user === 'username' && password === 'password') {
-        localStorage.setItem('username', user);
+        service.authorized = true;
         return true;
       }
 
@@ -24,15 +25,11 @@
     }
 
     function logout() {
-      localStorage.removeItem('username');
-    }
-
-    function getUser() {
-      return localStorage.getItem('username');
+      service.authorized = false;
     }
 
     function isAuthorized() {
-      return getUser() !== null;
+      return $q.when(service.authorized);
     }
   }
 

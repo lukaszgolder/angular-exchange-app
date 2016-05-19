@@ -5,10 +5,10 @@
     .module('app')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['AuthService'];
+  LoginController.$inject = ['$state', 'AuthService'];
 
   /* @ngInject */
-  function LoginController(AuthService) {
+  function LoginController($state, AuthService) {
     var vm = this;
 
     this.onSubmit = onSubmit;
@@ -26,6 +26,7 @@
         return false;
       }
 
+      $state.go('exchange');
       return true;
     }
   }
