@@ -5,16 +5,17 @@
     .module('app')
     .controller('ExchangeFormController', ExchangeFormController);
 
-  ExchangeFormController.$inject = ['TransactionService', 'CURRENCIES'];
+  ExchangeFormController.$inject = ['AccountService', 'TransactionService', 'CURRENCIES'];
 
   /* @ngInject */
-  function ExchangeFormController(TransactionService, CURRENCIES) {
+  function ExchangeFormController(AccountService, TransactionService, CURRENCIES) {
     var vm = this;
 
     this.onAmountChanged = onAmountChanged;
     this.onResultChanged = onResultChanged;
     this.onSourceChanged = onSourceChanged;
     this.onTargetChanged = onTargetChanged;
+    this.onSubmit = onSubmit;
     this.exchange = exchange;
 
     activate();
@@ -52,6 +53,20 @@
       if (vm.controls.source !== vm.controls.target) {
         vm.exchange('target');
       }
+    }
+
+    function onSubmit() {
+      if (!AccountService.validate(vm.controls.amount, vm.controls.source)) {
+        vm.alert = 'Nie posiadasz wystarczających środków';
+        return;
+      }
+
+      TransactionService.create(
+        vm.controls.amount,
+        vm.controls.source,
+        vm.controls.result,
+        vm.controls.target
+      );
     }
 
     function exchange(dir) {

@@ -5,27 +5,16 @@
     .module('app')
     .controller('SummaryController', SummaryController);
 
-  SummaryController.$inject = [];
+  SummaryController.$inject = ['AccountService'];
 
   /* @ngInject */
-  function SummaryController() {
+  function SummaryController(AccountService) {
     var vm = this;
 
     activate();
 
     function activate() {
-      vm.account = {
-        currencies: [
-          {
-            amount: 1000,
-            currency: 'EUR'
-          },
-          {
-            amount: 500,
-            currency: 'USD'
-          }
-        ]
-      }
+      vm.currencies = AccountService.currencies;
     }
   }
 

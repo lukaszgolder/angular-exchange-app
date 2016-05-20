@@ -24,8 +24,6 @@
       .state('exchange', {
         url: '/exchange',
         templateUrl: 'app/exchange/exchange.html',
-        controller: 'ExchangeController',
-        controllerAs: 'vm',
         resolve: {
           auth: auth,
           rate: rate

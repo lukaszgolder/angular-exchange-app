@@ -1,4 +1,7 @@
-<form name="form" ng-submit="vm.onSubmit(form)">
+<form ng-submit="vm.onSubmit()" novalidate>
+  <div class="alert alert-danger" ng-if="vm.alert">
+    {{vm.alert}}
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">

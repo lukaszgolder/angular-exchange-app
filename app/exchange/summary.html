@@ -1,7 +1,7 @@
 <h4>Dostępne środki</h4>
 <div class="list-group">
-  <div class="list-group-item" ng-repeat="account in vm.account.currencies">
-    {{account.amount}}
+  <div class="list-group-item" ng-repeat="account in vm.currencies">
+    {{account.amount | number: 2}}
     {{account.currency}}
   </div>
 </div>

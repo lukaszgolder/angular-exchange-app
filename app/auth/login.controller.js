@@ -26,7 +26,7 @@
         return false;
       }
 
-      $state.go('exchange');
+      $state.go('exchange.summary.form');
       return true;
     }
   }

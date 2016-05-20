@@ -5,31 +5,16 @@
     .module('app')
     .controller('HistoryController', HistoryController);
 
-  HistoryController.$inject = [];
+  HistoryController.$inject = ['AccountService'];
 
   /* @ngInject */
-  function HistoryController() {
+  function HistoryController(AccountService) {
     var vm = this;
 
     activate();
 
     function activate() {
-      vm.list = [
-        {
-          amount: 100,
-          source: 'EUR',
-          target: 'USD',
-          rate: 1.1427,
-          date: new Date()
-        },
-        {
-          amount: 300,
-          source: 'EUR',
-          target: 'PLN',
-          rate: 4.4198,
-          date: new Date()
-        }
-      ];
+      vm.list = AccountService.transactions;
     }
   }
 

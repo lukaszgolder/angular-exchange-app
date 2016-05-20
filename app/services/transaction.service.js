@@ -5,15 +5,16 @@
     .module('app')
     .service('TransactionService', TransactionService);
 
-  TransactionService.$inject = ['$http', '$q', 'API_URL'];
+  TransactionService.$inject = ['$http', '$q', 'API_URL', 'AccountService'];
 
   /* @ngInject */
-  function TransactionService($http, $q, API_URL) {
+  function TransactionService($http, $q, API_URL, AccountService) {
     var service = this;
 
     this.getRates = getRates;
     this.exchange = exchange;
     this.result = result;
+    this.create = create;
 
     this.rates = {};
 
@@ -39,6 +40,38 @@
 
     function result(amount, rate) {
       return (amount * rate).toFixed(2);
+    }
+
+    function create(amount, source, result, target) {
+      AccountService.addTransaction({
+        amount: amount,
+        source: source,
+        target: target,
+        rate: service.rates[source][target],
+        date: new Date()
+      });
+
+      var sourceCurrency, targetCurrency;
+
+      AccountService.currencies.some(function (element) {
+        if (element.currency === source) {
+          sourceCurrency = element;
+        } else if (element.currency === target) {
+          targetCurrency = element;
+        }
+
+        return !!sourceCurrency && !!targetCurrency;
+      });
+
+      if (!targetCurrency) {
+        targetCurrency = AccountService.addCurrency({
+          amount: 0,
+          currency: target
+        });
+      }
+
+      sourceCurrency.amount -= Number(amount);
+      targetCurrency.amount += Number(result);
     }
   }
 
