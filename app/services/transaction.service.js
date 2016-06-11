@@ -7,6 +7,14 @@
 
   TransactionService.$inject = ['$http', '$q', 'API_URL', 'AccountService'];
 
+  /**
+   *
+   * 5. SERWISY
+   *
+   *    - Http
+   *
+   */
+
   /* @ngInject */
   function TransactionService($http, $q, API_URL, AccountService) {
     var service = this;

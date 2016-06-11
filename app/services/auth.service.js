@@ -1,3 +1,12 @@
+/**
+ *
+ * 5. SERWISY
+ *
+ *    - angular.service
+ *    - $q.when
+ *
+ */
+
 (function () {
   'use strict';
 

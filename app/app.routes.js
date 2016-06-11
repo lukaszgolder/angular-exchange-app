@@ -1,3 +1,12 @@
+/**
+ *
+ * 2. ROUTER
+ *
+ *    - deklaracja
+ *    - resolve
+ *
+ */
+
 (function () {
   'use strict';
 

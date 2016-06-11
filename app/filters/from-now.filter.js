@@ -1,3 +1,11 @@
+/**
+ *
+ * 4. FILTRY
+ *
+ *    - Deklaracja
+ *
+ */
+
 (function () {
   'use strict';
 

@@ -1,11 +1,17 @@
 (function () {
   'use strict';
 
+  /**
+   *
+   * 7. DEPENDENCY INJECTION
+   *
+   *    - $inject lub nawiasy kwadratowe
+   *
+   */
+
   angular
     .module('app')
-    .controller('ExchangeFormController', ['AccountService', function (AccountService) {
-      
-    }]);
+    .controller('ExchangeFormController', ExchangeFormController);
 
   ExchangeFormController.$inject = ['AccountService', 'TransactionService', 'CURRENCIES'];
 
