@@ -3,7 +3,9 @@
 
   angular
     .module('app')
-    .controller('ExchangeFormController', ExchangeFormController);
+    .controller('ExchangeFormController', ['AccountService', function (AccountService) {
+      
+    }]);
 
   ExchangeFormController.$inject = ['AccountService', 'TransactionService', 'CURRENCIES'];
 
